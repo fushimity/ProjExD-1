@@ -17,8 +17,6 @@ def kaitou(ans_lst):
     else :
         print("出直してこい!!!")
 
-    return st
-
 
 if __name__ == "__main__":
     st = datetime.datetime.now()
@@ -38,5 +36,5 @@ if __name__ == "__main__":
     print(ed)
     print(st)
     '''
-    
+
     print("所要時間 : " + str((ed - st).seconds))

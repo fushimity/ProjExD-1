@@ -1,4 +1,5 @@
 #消えたアルファベットを探すゲーム
+
 from random import sample as sp
 import time
 

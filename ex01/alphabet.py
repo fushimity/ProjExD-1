@@ -4,7 +4,7 @@
 from random import sample as sp
 import time
 
-num_of_alphabet = 26        #全アルファベット総数
+num_of_alphabet = 26        #全アルファベット総数(いい変数名って褒められた)
 num_of_all_chars = 10       #対象文字数
 num_of_abc_chars = 2        #欠損文字数
 num_of_trials = 2           #挑戦回数

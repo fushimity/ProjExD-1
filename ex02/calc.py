@@ -15,7 +15,7 @@ def Button_click(event):
         try : 
             res = eval(siki)        # 数式文字列の評価
 
-        # プラスを2回行ってからイコールを押すなど, 入力にミスが有った時.
+        # プラスを2回行ってからイコールを押すなど, 入力にミスが有った時. (追加)
         except SyntaxError : 
             tkm.showwarning("警告", "入力ミスがあります. もう一度試してみて下さい.")
             entry.delete(0, tk.END) # 表示文字列の削除
@@ -23,6 +23,12 @@ def Button_click(event):
         entry.delete(0, tk.END)     # 表示文字列の削除
         entry.insert(tk.END, res)   # 結果の挿入
     
+    # AC の挙動
+
+    elif txt == "AC" :
+        tkm.showinfo("完了", "リセットしました.")
+        entry.delete(0, tk.END)     # 表示文字列の削除 
+
     else : # = 以外
         # tkm.showinfo(txt, f"[{txt}]ボタンが押されました.")
         #6. ボタンをクリックした時の挙動を変更
@@ -31,7 +37,7 @@ def Button_click(event):
 #1. ウィンドウの作成
 root = tk.Tk()
 root.title("calc_GUI")
-root.geometry("300x500")
+root.geometry("300x600")
 
 #4. ボタンの上に, テキスト入力欄を追加
 
@@ -63,6 +69,22 @@ symbol = ["+", "="]
 
 for ope in symbol:
     button = tk.Button(root, text=ope, width = 4, height = 2,
+                       font = ("", 30))
+
+    button.grid(row=r, column=c)
+    button.bind("<1>", Button_click)
+
+    c += 1
+
+    if c % 3 == 0:
+        r += 1
+        c = 0
+
+# オールクリアボタンの作成 (追加)
+add_symbol = ["AC"]
+
+for sym in add_symbol:
+    button = tk.Button(root, text=sym, width = 4, height = 2,
                        font = ("", 30))
 
     button.grid(row=r, column=c)

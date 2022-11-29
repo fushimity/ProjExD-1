@@ -7,7 +7,6 @@ def Button_click(event):
     btn = event.widget
     txt = btn["text"]
     
-
     #7. =のときの挙動
 
     if txt == "=" :
@@ -41,7 +40,7 @@ for num in range(9, -1, -1):
                        font = ("", 30))
     button.grid(row=r, column=c)
 
-    #クリック時の処理
+    # クリック時の処理
     button.bind("<1>", Button_click)
 
     c += 1
@@ -49,8 +48,6 @@ for num in range(9, -1, -1):
     if c % 3 == 0:
         r += 1
         c = 0
-
-    
 
 #5. 空いたところに+=ボタンを追加.
 
@@ -69,5 +66,4 @@ for ope in symbol:
         r += 1
         c = 0
     
-
 root.mainloop()

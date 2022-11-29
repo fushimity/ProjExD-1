@@ -8,12 +8,10 @@ def Button_click(event):
     txt = btn["text"]
     tkm.showinfo(txt, f"[{txt}]ボタンが押されました.")
 
-
 # 1. ウィンドウの作成
 root = tk.Tk()
 root.title("calc_GUI")
 root.geometry("300x500")
-
 
 #2. ボタンの作成
 

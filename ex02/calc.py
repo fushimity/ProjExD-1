@@ -17,17 +17,31 @@ def Button_click(event):
 
         # プラスを2回行ってからイコールを押すなど, 入力にミスが有った時. (追加)
         except SyntaxError : 
-            tkm.showwarning("警告", "入力ミスがあります. もう一度試してみて下さい.")
+            tkm.showwarning("警告", "入力ミスがあるよ~ もう一度試してね!")
             entry.delete(0, tk.END) # 表示文字列の削除
+            tkm.showinfo("完了", "文字を削除したよ~")
 
         entry.delete(0, tk.END)     # 表示文字列の削除
         entry.insert(tk.END, res)   # 結果の挿入
     
-    # AC の挙動
+    # 追加機能の挙動
 
-    elif txt == "AC" :
-        tkm.showinfo("完了", "リセットしました.")
-        entry.delete(0, tk.END)     # 表示文字列の削除 
+    elif txt == "AC"  or txt == "税込":
+        if txt == "AC" :
+            tkm.showinfo("完了", "リセットしたよ.")
+            entry.delete(0, tk.END)     # 表示文字列の削除 
+
+        else :
+            try :
+                tax = entry.get() 
+                #print(type(tax))
+                tax_ans = float(tax) * 1.08
+                entry.delete(0, tk.END)     # 表示文字列の削除
+                entry.insert(tk.END, tax_ans)   # 結果の挿入
+            
+            # 税込み単体で押した時のエラー
+            except UnboundLocalError :
+                tkm.showwarning("警告", "何も数値を入れていないから, 税込み表示できないよ!!!")
 
     else : # = 以外
         # tkm.showinfo(txt, f"[{txt}]ボタンが押されました.")
@@ -63,9 +77,9 @@ for num in range(9, -1, -1):
         r += 1
         c = 0
 
-#5. 空いたところに+=ボタンを追加.
+#5. 空いたところに+=ボタンを追加. + オールクリアボタン/小数での計算"."の作成(追加)
 
-symbol = ["+", "="]
+symbol = ["+", "=", ".", "AC", "税込"]
 
 for ope in symbol:
     button = tk.Button(root, text=ope, width = 4, height = 2,
@@ -79,21 +93,4 @@ for ope in symbol:
     if c % 3 == 0:
         r += 1
         c = 0
-
-# オールクリアボタンの作成 (追加)
-add_symbol = ["AC"]
-
-for sym in add_symbol:
-    button = tk.Button(root, text=sym, width = 4, height = 2,
-                       font = ("", 30))
-
-    button.grid(row=r, column=c)
-    button.bind("<1>", Button_click)
-
-    c += 1
-
-    if c % 3 == 0:
-        r += 1
-        c = 0
-    
 root.mainloop()

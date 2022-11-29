@@ -67,12 +67,10 @@ for num in range(9, -1, -1):
     button = tk.Button(root, text=num, width = 4, height = 2,
                        font = ("", 30))
     button.grid(row=r, column=c)
-
     # クリック時の処理
     button.bind("<1>", Button_click)
 
     c += 1
-
     if c % 3 == 0:
         r += 1
         c = 0

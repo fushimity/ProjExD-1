@@ -6,10 +6,20 @@ import tkinter.messagebox as tkm
 def Button_click(event):
     btn = event.widget
     txt = btn["text"]
-    # tkm.showinfo(txt, f"[{txt}]ボタンが押されました.")
+    
 
-    #6. ボタンをクリックした時の挙動を変更
-    entry.insert(tk.END, txt)
+    #7. =のときの挙動
+
+    if txt == "=" :
+        siki = entry.get()          # 数式の文字列
+        res = eval(siki)            # 数式文字列の評価
+        entry.delete(0, tk.END)     # 表示文字列の削除
+        entry.insert(tk.END, res)   # 結果の挿入
+    
+    else : # = 以外
+        # tkm.showinfo(txt, f"[{txt}]ボタンが押されました.")
+        #6. ボタンをクリックした時の挙動を変更
+        entry.insert(tk.END, txt)
 
 #1. ウィンドウの作成
 root = tk.Tk()

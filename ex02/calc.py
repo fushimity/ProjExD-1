@@ -1,16 +1,19 @@
 import tkinter as tk
 import tkinter.messagebox as tkm
 
+
 #3. クリックした際の反応
-def button_click(event):
+def Button_click(event):
     btn = event.widget
     txt = btn["text"]
     tkm.showinfo(txt, f"[{txt}]ボタンが押されました.")
+
 
 # 1. ウィンドウの作成
 root = tk.Tk()
 root.title("calc_GUI")
 root.geometry("300x500")
+
 
 #2. ボタンの作成
 
@@ -29,6 +32,6 @@ for num in range(9, -1, -1):
         c = 0
 
     #クリック時の処理
-    button.bind("<1>", button_click)
+    button.bind("<1>", Button_click)
 
 root.mainloop()

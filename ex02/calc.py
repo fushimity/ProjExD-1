@@ -37,4 +37,21 @@ for num in range(9, -1, -1):
     #クリック時の処理
     button.bind("<1>", Button_click)
 
+# 5. 空いたところに+=ボタンを追加.
+
+symbol = ["+", "="]
+
+for ope in symbol:
+    button = tk.Button(root, text=ope, width = 4, height = 2,
+                       font = ("", 30))
+    button.grid(row=r, column=c)
+
+    c += 1
+
+    if c % 3 == 0:
+        r += 1
+        c = 0
+    
+    # クリックの実装はなし.
+
 root.mainloop()

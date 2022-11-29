@@ -6,9 +6,12 @@ import tkinter.messagebox as tkm
 def Button_click(event):
     btn = event.widget
     txt = btn["text"]
-    tkm.showinfo(txt, f"[{txt}]ボタンが押されました.")
+    # tkm.showinfo(txt, f"[{txt}]ボタンが押されました.")
 
-# 1. ウィンドウの作成
+    #6. ボタンをクリックした時の挙動を変更
+    entry.insert(tk.END, txt)
+
+#1. ウィンドウの作成
 root = tk.Tk()
 root.title("calc_GUI")
 root.geometry("300x500")
@@ -28,23 +31,27 @@ for num in range(9, -1, -1):
                        font = ("", 30))
     button.grid(row=r, column=c)
 
+    #クリック時の処理
+    button.bind("<1>", Button_click)
+
     c += 1
 
     if c % 3 == 0:
         r += 1
         c = 0
 
-    #クリック時の処理
-    button.bind("<1>", Button_click)
+    
 
-# 5. 空いたところに+=ボタンを追加.
+#5. 空いたところに+=ボタンを追加.
 
 symbol = ["+", "="]
 
 for ope in symbol:
     button = tk.Button(root, text=ope, width = 4, height = 2,
                        font = ("", 30))
+
     button.grid(row=r, column=c)
+    button.bind("<1>", Button_click)
 
     c += 1
 
@@ -52,6 +59,5 @@ for ope in symbol:
         r += 1
         c = 0
     
-    # クリックの実装はなし.
 
 root.mainloop()

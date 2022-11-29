@@ -13,9 +13,14 @@ root = tk.Tk()
 root.title("calc_GUI")
 root.geometry("300x500")
 
+#4. ボタンの上に, テキスト入力欄を追加
+
+entry = tk.Entry(root, justify="right", width = 10, font=("", 40))
+entry.grid(row = 0, column = 0, columnspan = 3)
+
 #2. ボタンの作成
 
-r = 0
+r = 1   # 入力欄とボタンの位置を重複させないようにしてあげる.
 c = 0
 
 for num in range(9, -1, -1):

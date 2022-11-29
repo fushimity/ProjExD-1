@@ -11,7 +11,15 @@ def Button_click(event):
 
     if txt == "=" :
         siki = entry.get()          # 数式の文字列
-        res = eval(siki)            # 数式文字列の評価
+        
+        try : 
+            res = eval(siki)        # 数式文字列の評価
+
+        # プラスを2回行ってからイコールを押すなど, 入力にミスが有った時.
+        except SyntaxError : 
+            tkm.showwarning("警告", "入力ミスがあります. もう一度試してみて下さい.")
+            entry.delete(0, tk.END) # 表示文字列の削除
+
         entry.delete(0, tk.END)     # 表示文字列の削除
         entry.insert(tk.END, res)   # 結果の挿入
     

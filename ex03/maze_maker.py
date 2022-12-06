@@ -31,6 +31,8 @@ def print_maze(maze_lst):
         for j in i:
             if j == 1:
                 j = "■"
+            # elif i == 13 and j == 7:
+            #     j = "☆"
             else:
                 j = "□"
             print(j,end="")

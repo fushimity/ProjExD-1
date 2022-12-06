@@ -32,6 +32,10 @@ if __name__ == '__main__':
                         image = tori, 
                         tag = "kokaton")
     canvas.pack()
+
+    maze_lst = mm.maze_maker(15, 9)
+    # print(maze_lst)
+
     key = ""
     root.bind("<KeyPress>", key_down)
     root.bind("<KeyRelease>", key_up)

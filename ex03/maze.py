@@ -1,7 +1,7 @@
 # 迷路ゲームの実装
 
 import tkinter as tk
-
+import maze_maker as mm
 
 def key_down(event):
     global key

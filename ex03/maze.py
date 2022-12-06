@@ -9,7 +9,6 @@ check = 0   # ゲーム動作しているかどうか.
 
 def count_up():
     global tmr, jid, check
-    
     label["text"] = tmr
     tmr += 1
     if check == 1:

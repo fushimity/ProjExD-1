@@ -14,4 +14,5 @@ if __name__ == '__main__':
                         image = tori, 
                         tag = "kokaton")
     canvas.pack()
+    key = ""
     root.mainloop()

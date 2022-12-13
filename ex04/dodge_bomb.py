@@ -6,18 +6,16 @@ from random import randint as rd
 
 # 練習7
 def check_bound(obj_rct, scr_rct):
-    #第1引数 : こうかとんrectまたは爆弾rect
-    #第2引数 : スクリーンrect
-    # 範囲内 : +1 / 範囲外 : -1
-    yoko, tate = +1, +1 # 範囲内で初期化
-
-    if obj_rct.left < scr_rct.left or scr_rct.right < obj_rct.right: 
+    # 第1引数：こうかとんrectまたは爆弾rect
+    # 第2引数：スクリーンrect
+    # 範囲内：+1／範囲外：-1
+    yoko, tate = +1, +1
+    if obj_rct.left < scr_rct.left or scr_rct.right < obj_rct.right:
         yoko = -1
-
-    if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom: 
+    if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom:
         tate = -1
-
     return yoko, tate
+
 
 def main():
     clock = pg.time.Clock()
@@ -64,19 +62,31 @@ def main():
             tori_rct.centerx -= 1
         if key_dct[pg.K_RIGHT] :
             tori_rct.centerx += 1
+        
+        if check_bound(tori_rct, scrn_rct) != (+1, +1):
+            # どこかしらはみ出していたら
+            if key_dct[pg.K_UP] :
+                tori_rct.centery += 1
+            if key_dct[pg.K_DOWN] :
+                tori_rct.centery -= 1
+            if key_dct[pg.K_LEFT] :
+                tori_rct.centerx += 1
+            if key_dct[pg.K_RIGHT] :
+                tori_rct.centerx -= 1
         scrn_sfc.blit(tori_sfc, tori_rct)           # blit
-
-        # 練習6
+        
+       # 練習６
         bomb_rct.move_ip(vx, vy)
-        scrn_sfc.blit(bomb_sfc, bomb_rct)
+        scrn_sfc.blit(bomb_sfc, bomb_rct) 
         yoko, tate = check_bound(bomb_rct, scrn_rct)
         vx *= yoko
-        vx *= tate
+        vy *= tate
         pg.display.update()
         clock.tick(1000)
 
-
-
+        # 練習7
+        if tori_rct.colliderect(bomb_rct):
+            return 
 
 if __name__ == '__main__':
     pg.init()

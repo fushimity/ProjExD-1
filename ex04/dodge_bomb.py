@@ -9,7 +9,7 @@ import tkinter.messagebox as tkm
 from pygame.locals import *
 
 screen = pg.display.set_mode((128, 128))
-clock = pg.time.clock()
+clock = pg.time.Clock()
 
 
 # 練習7

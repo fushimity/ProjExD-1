@@ -2,12 +2,14 @@
 
 import pygame as pg
 import sys
+from random import randint as rd
 
 def main():
     clock = pg.time.Clock()
     # 練習1
     pg.display.set_caption("逃げろ!こうかとん")
     scrn_sfc = pg.display.set_mode((1600, 900))
+    scrn_rct = scrn_sfc.get_rect()
     pgbg_sfc = pg.image.load("../fig/pg_bg.jpg")
     pgbg_rct = pgbg_sfc.get_rect()
 
@@ -18,6 +20,17 @@ def main():
     tori_rct.center = 900, 400
     # scrn_sfcにtori_rctに従って, tori_sfcを貼り付ける
     scrn_sfc.blit(tori_sfc, tori_rct)           # blit
+
+    # 練習5
+    bomb_sfc = pg.Surface((20, 20))             # 正方形の空Surface
+    bomb_sfc.set_colorkey((0, 0, 0))            # 四隅の黒を排除
+    pg.draw.circle(bomb_sfc, (255, 0, 0), (10, 10), 10) # Surfaceの半分の値の10を代入.
+    bomb_rct = bomb_sfc.get_rect()
+    bomb_rct.centerx = rd(0, scrn_rct.width)
+    bomb_rct.centery = rd(0, scrn_rct.height)
+    scrn_sfc.blit(bomb_sfc, bomb_rct)
+
+    # bomb_rct.centerx, bomb_rct.centery = rd()
 
     # 練習2
     while True:
@@ -38,6 +51,7 @@ def main():
             tori_rct.centerx += 1
         scrn_sfc.blit(tori_sfc, tori_rct)           # blit
 
+        scrn_sfc.blit(bomb_sfc, bomb_rct)
         pg.display.update()
         clock.tick(1000)
 

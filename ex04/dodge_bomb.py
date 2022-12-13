@@ -1,4 +1,4 @@
-# 逃げろ!こうかとん のゲームを作成
+# 逃げろ!こうかとん のゲームを作成(追加機能まで)
 
 import pygame as pg
 import sys

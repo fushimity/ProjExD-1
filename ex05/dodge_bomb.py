@@ -1,6 +1,21 @@
+# アルファベット順にパッケージ読み出し
 import pygame as pg
 import random
 import sys
+
+
+class Screen():
+    def __init__(self, title, wh, img_path):
+        # 練習１
+        pg.display.set_caption(title)           # "逃げろ！こうかとん"
+        self.sfc = pg.display.set_mode(wh)      #(1600, 900)(幅/高さのタプル)
+        self.rct = self.rct.get_rect()
+        self.bgi_sfc = pg.image.load(img_path)      # "../fig/pg_bg.jpg"
+        self.bgi_rct = self.bgi_rect.get_rect()
+
+    def blit(self):
+        # scrn_sfcにtori_rctに従って，tori_sfcを貼り付ける
+        self.sfc.blit(self.bgi_sfc, self.bgi_rct) 
 
 
 key_delta = {
@@ -27,12 +42,9 @@ def check_bound(obj_rct, scr_rct):
 
 def main():
     clock =pg.time.Clock()
-    # 練習１
-    pg.display.set_caption("逃げろ！こうかとん")
-    scrn_sfc = pg.display.set_mode((1600, 900))
-    scrn_rct = scrn_sfc.get_rect()
-    pgbg_sfc = pg.image.load("../fig/pg_bg.jpg")
-    pgbg_rct = pgbg_sfc.get_rect()
+    
+    # 練習1
+    scr = Screen("逃げろ！こうかとん", (1600, 900), "../fig/pg_bg.jpg")
 
     # 練習３
     tori_sfc = pg.image.load("../fig/6.png")
@@ -54,7 +66,8 @@ def main():
 
     # 練習２
     while True:
-        scrn_sfc.blit(pgbg_sfc, pgbg_rct) 
+        # scrn_sfc.blit(pgbg_sfc, pgbg_rct) 
+        scr.blit()
 
         for event in pg.event.get():
             if event.type == pg.QUIT:

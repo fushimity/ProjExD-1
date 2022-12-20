@@ -3,7 +3,7 @@ import os
 import random
 import sys
 
-
+# ファイルの置かれているディレクトリ名を探し当てるのに利用
 main_dir = os.path.split(os.path.abspath(__file__))[0]
 
 # 攻撃部分
@@ -26,6 +26,7 @@ class Setup:
         return surface.convert()
 
 
+# スクリーンの設定
 class Screen:
     def __init__(self, title, wh, img_path):
         pg.display.set_caption(title) 
@@ -38,6 +39,7 @@ class Screen:
         self.sfc.blit(self.bgi_sfc, self.bgi_rct) 
 
 
+# こうかとんの設定
 class Bird:
     key_delta = {
         pg.K_UP:    [0, -1],
@@ -67,6 +69,7 @@ class Bird:
         self.blit(scr)                    
 
 
+# 爆弾の設定
 class Bomb:
     def __init__(self, color, rad, vxy, scr:Screen):
         self.sfc = pg.Surface((2*rad, 2*rad)) # 正方形の空のSurface
@@ -143,6 +146,7 @@ def check_bound(obj_rct, scr_rct):
     return yoko, tate
 
 
+# 音声の再生
 def load_sound(file):
     """because pygame can be be compiled without mixer."""
     if not pg.mixer:

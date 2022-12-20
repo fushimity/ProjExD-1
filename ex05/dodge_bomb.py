@@ -26,7 +26,6 @@ class Bird():
     }
 
     def __init__(self, img_path, ratio, xy):
-        # 練習３
         self.sfc = pg.image.load(img_path)                        # "../fig/6.png"
         self.sfc = pg.transform.rotozoom(self.sfc, 0, ratio)      # 拡大率 -> ratio(2.0), (他の関数で使わないからselfつけない.)
         self.rct = self.sfc.get_rect()
@@ -41,7 +40,6 @@ class Bird():
             if key_dct[key]:
                 self.rct.centerx += delta[0]
                 self.rct.centery += delta[1]
-            # 練習7
             if check_bound(self.rct, scr.rct) != (+1, +1):  # どこかしらはみ出ていたら...
                 self.rct.centerx -= delta[0]
                 self.rct.centery -= delta[1]
